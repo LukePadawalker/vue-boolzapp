@@ -13,12 +13,17 @@
 .left-header{
     height: 70px;
     width: 100%;
-    border: 1px solid rgb(24, 16, 16);
-    background-color: rgb(252, 144, 144);
+    background-color: rgb(205, 205, 205);
 }
 
+.user-avatar{
+    max-height:50px;
+    max-width:50px;
+}
+
+
 .receive-notifications{
-    height: 100px;
+    height: 90px;
     width: 100%;
     background-color: rgb(0, 204, 255);
 }
@@ -37,7 +42,7 @@
 }
 
 .contact-card{
-    height: 100px;
+    height: 80px;
     width: 100%;
     background-color: cadetblue;
 }
@@ -53,7 +58,6 @@
 .right-header{
     height: 70px;
     width: 100%;
-    border: 1px solid rgb(24, 16, 16);
     border-left: 0;
     background-color: rgb(212, 208, 208);
 }
@@ -68,6 +72,23 @@
 .right-footer{
     height: 70px;
     width: 100%;
-    border: 1px solid rgb(24, 16, 16);
     background-color: rgb(212, 208, 208);
+}
+
+.emoji-container{
+    width: 5%;
+}
+.message-input{
+    width: 90%;
+}
+
+.chat-input{
+    width: 100%;
+    font-size: 0.7rem;
+    border-radius: 7px;
+    border: 0;
+}
+
+.voice-message{
+    width: 5%;
 }
