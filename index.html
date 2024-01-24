@@ -31,11 +31,19 @@
                 <div class="receive-notifications"></div>
                 <div class="search-chat d-flex align-items-center ps-2 pe-2">
                     <div class="input-group">
-                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <!-- <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span> -->
                         <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Username">
                       </div>
                 </div>
-                <div class="chat-container"></div>
+                <div class="chat-container">
+                    <div v-for="contact in contacts" class="contact-card d-flex">
+                        <img src="{{contact.avatar}}" alt="">
+                        <div class="contact-info-container">
+                            <p>{{contact.name}}</p>
+                        </div>
+
+                    </div>
+                </div>
             </div>
             <div class="right-section col-8 d-flex flex-column justify-content-between">
                 <div class="right-header"></div>

@@ -30,6 +30,18 @@
 
 }
 
+.chat-container{
+    height: calc(100vh - 220px);
+    background-color: darkgrey;
+    overflow: hidden;
+}
+
+.contact-card{
+    height: 100px;
+    width: 100%;
+    background-color: cadetblue;
+}
+
 
 
 
