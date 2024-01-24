@@ -26,7 +26,11 @@
 <body>
     <div id="root">
         <div class="d-flex">
+
+            <!-- left section (contacts + user) -->
             <div class="left-section col-4 d-flex flex-column">
+
+                <!-- left header with info about the user, story button, messages button and settings button -->
                 <div class="left-header d-flex align-items-center justify-content-between">
                     <div class="user-section d-flex align-items-center p-2">
                         <div class="user-avatar">
@@ -48,13 +52,20 @@
                         </div>
                     </div>
                 </div>
+
+
+                <!-- the annoying "allow notifications" tab -->
                 <div class="receive-notifications"></div>
+
+                <!-- the "search contact" search -->
                 <div class="search-chat d-flex align-items-center ps-2 pe-2">
                     <div class="input-group">
                         <!-- <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span> -->
                         <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Username">
                       </div>
                 </div>
+
+                <!-- the contacts section (generated with Vue) -->
                 <div class="chat-container">
                     <div v-for="contact in contacts" class="contact-card d-flex">
                         <img src="{{contact.avatar}}" alt="">
@@ -65,7 +76,13 @@
                     </div>
                 </div>
             </div>
+
+
+
+            <!-- right section (current chat) -->
             <div class="right-section col-8 d-flex flex-column justify-content-between">
+
+                <!-- the right header with info about the current contact -->
                 <div class="right-header d-flex justify-content-between">
                     <div class="user-section d-flex align-items-center p-2">
                         <div class="user-avatar">
@@ -87,7 +104,12 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- the chat section -->
                 <div class="content"></div>
+
+
+                <!-- the "write a message" section -->
                 <div class="right-footer d-flex align-items-center">
                     <div class="emoji-container d-flex justify-content-center align-items-center">
                         <i class="fa-regular fa-face-smile"></i>
@@ -100,7 +122,6 @@
                     <div class="voice-message d-flex justify-content-center align-items-center">
                         <i class="fa-solid fa-microphone"></i>
                     </div>
-                    <!-- last change: voice message and footer build -->
                 </div>
             </div>
 

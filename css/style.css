@@ -10,6 +10,7 @@
     background-color: rgb(210, 235, 239);
 }
 
+/* left header section */
 .left-header{
     height: 70px;
     width: 100%;
@@ -22,12 +23,15 @@
 }
 
 
+/* receive notifications section */
 .receive-notifications{
     height: 90px;
     width: 100%;
     background-color: rgb(0, 204, 255);
 }
 
+
+/* the search contact section */
 .search-chat{
     height: 50px;
     width: 100%;
@@ -35,6 +39,8 @@
 
 }
 
+
+/* the contacts section */
 .chat-container{
     height: calc(100vh - 220px);
     background-color: darkgrey;
@@ -55,6 +61,7 @@
     max-height: 100vh; 
 }
 
+/* right header section */
 .right-header{
     height: 70px;
     width: 100%;
@@ -62,6 +69,7 @@
     background-color: rgb(212, 208, 208);
 }
 
+/* the messages section */
 .content{
     height: calc(100vh - 140px);
     width: 100%;
@@ -69,6 +77,8 @@
     overflow: hidden;
 }
 
+
+/* the "write a message" section */
 .right-footer{
     height: 70px;
     width: 100%;
