@@ -141,21 +141,10 @@
                     </div>
     
                     <!-- the chat section -->
-                    <div class="content d-flex flex-column overflow-y-scroll ps-5 pb-2 pe-5">
-                        <div v-for="message in textMessagesArray">
-                            <div v-if="message.status === 'sent'">
-                                <div class="message sent mb-2 d-flex">
-                                    <p class="m-0 p-2 ps-3">{{message.text}}</p>
-                                    <p class="m-0 p-1 align-self-end message-time">{{message.date}}</p>
-                                </div>
-                            </div>
-                            <div v-else>
-                                <div class="message sent mb-2 d-flex">
-                                    <p class="m-0 p-2 ps-3">{{message.text}}</p>
-                                    <p class="m-0 p-1 align-self-end message-time">{{message.date}}</p>
-                                </div>
-                            </div>
-
+                    <div class="content d-flex flex-column-reverse overflow-y-scroll ps-5 pb-2 pe-5">
+                        <div v-for="message in textMessagesArray" class="message mb-2 d-flex" :class="message.status">
+                            <p class="m-0 p-2 ps-3">{{message.text}}</p>
+                            <p class="m-0 p-1 align-self-end message-time">{{message.date}}</p>
                         </div>
                         
                         

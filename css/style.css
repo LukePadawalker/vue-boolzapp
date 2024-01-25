@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family:Open Sans, Devanagari,sans-serif;
+    font-family:Devanagari,sans-serif;
 }
 
 
@@ -110,7 +110,7 @@
 
 .message{
     min-height: 6%;
-    min-width: 5%;
+    max-width: 80%;
     border-radius: 5px;
     flex-shrink: 0;
     font-size: small;
