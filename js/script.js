@@ -2,11 +2,13 @@ console.log("vue ok", Vue)
 
 const { createApp } = Vue;
 
-const data = data;
 
 const app = createApp({
     data() {
-        data
+        return{
+            user: data.user,
+            contacts: data.contacts,
+        }
     }
 })
 

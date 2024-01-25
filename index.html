@@ -25,107 +25,109 @@
 </head>
 <body>
     <div id="root">
-        <div class="d-flex">
-
-            <!-- left section (contacts + user) -->
-            <div class="left-section col-4 d-flex flex-column">
-
-                <!-- left header with info about the user, story button, messages button and settings button -->
-                <div class="left-header d-flex align-items-center justify-content-between">
-                    <div class="user-section d-flex align-items-center p-2">
-                        <div class="user-avatar">
-                            <img src="/assets/img/avatar_io.jpg" alt="" class="img-fluid rounded-circle">
+        <div class="background d-flex justify-content-center align-items-center">
+            <div class="d-flex webapp-window">
+                <!-- left section (contacts + user) -->
+                <div class="left-section col-4 d-flex flex-column p-0">
+    
+                    <!-- left header with info about the user, story button, messages button and settings button -->
+                    <div class="left-header d-flex align-items-center justify-content-between">
+                        <div class="user-section d-flex align-items-center p-2">
+                            <div class="user-avatar">
+                                <img :src="`/assets/img/avatar${user.avatar}`" alt="" class="img-fluid rounded-circle">
+                            </div>
+                            <div class="user-name d-flex align-items-center">
+                                <p class="m-0 ps-2">Luca</p>
+                            </div>
                         </div>
-                        <div class="user-name d-flex align-items-center">
-                            <p class="m-0 ps-2">Luca</p>
-                        </div>
-                    </div>
-                    <div class="social-section d-flex align-items-center justify-content-between">
-                        <div class="stories">
-                            <i class="fa-solid fa-circle-notch p-2 text-secondary"></i>
-                        </div>
-                        <div class="messages">
-                            <i class="fa-solid fa-message p-2 text-secondary"></i>
-                        </div>
-                        <div class="settings">
-                            <i class="fa-solid fa-ellipsis-vertical ps-2 pe-3 text-secondary"></i>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- the annoying "allow notifications" tab -->
-                <div class="receive-notifications"></div>
-
-                <!-- the "search contact" search -->
-                <div class="search-chat d-flex align-items-center ps-2 pe-2">
-                    <div class="input-group">
-                        <!-- <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span> -->
-                        <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Username">
-                      </div>
-                </div>
-
-                <!-- the contacts section (generated with Vue) -->
-                <div class="chat-container">
-                    <div v-for="contact in contacts" class="contact-card d-flex">
-                        <img src="{{contact.avatar}}" alt="">
-                        <div class="contact-info-container">
-                            <p>{{contact.name}}</p>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-
-            <!-- right section (current chat) -->
-            <div class="right-section col-8 d-flex flex-column justify-content-between">
-
-                <!-- the right header with info about the current contact -->
-                <div class="right-header d-flex justify-content-between">
-                    <div class="user-section d-flex align-items-center p-2">
-                        <div class="user-avatar">
-                            <img src="/assets/img/avatar_io.jpg" alt="" class="img-fluid rounded-circle">
-                        </div>
-                        <div class="user-name d-flex align-items-center">
-                            <p class="m-0 ps-2">Catalin Calugarici</p>
+                        <div class="social-section d-flex align-items-center justify-content-between">
+                            <div class="stories">
+                                <i class="fa-solid fa-circle-notch p-2 text-secondary"></i>
+                            </div>
+                            <div class="messages">
+                                <i class="fa-solid fa-message p-2 text-secondary"></i>
+                            </div>
+                            <div class="settings">
+                                <i class="fa-solid fa-ellipsis-vertical ps-2 pe-3 text-secondary"></i>
+                            </div>
                         </div>
                     </div>
-                    <div class="social-section d-flex align-items-center justify-content-between">
-                        <div class="stories">
-                            <i class="fa-solid fa-search p-2 text-secondary"></i>
-                        </div>
-                        <div class="messages">
-                            <i class="fa-solid fa-paperclip p-2 text-secondary"></i>
-                        </div>
-                        <div class="settings">
-                            <i class="fa-solid fa-ellipsis-vertical ps-2 pe-3 text-secondary"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- the chat section -->
-                <div class="content"></div>
-
-
-                <!-- the "write a message" section -->
-                <div class="right-footer d-flex align-items-center">
-                    <div class="emoji-container d-flex justify-content-center align-items-center">
-                        <i class="fa-regular fa-face-smile"></i>
-                    </div>
-                    <div class="message-input">
+    
+    
+                    <!-- the annoying "allow notifications" tab -->
+                    <div class="receive-notifications"></div>
+    
+                    <!-- the "search contact" search -->
+                    <div class="search-chat d-flex align-items-center ps-2 pe-2">
                         <div class="input-group">
-                            <input type="text" class="chat-input form-control" placeholder="Scrivi un messaggio">
+                            <!-- <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span> -->
+                            <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Username">
                           </div>
                     </div>
-                    <div class="voice-message d-flex justify-content-center align-items-center">
-                        <i class="fa-solid fa-microphone"></i>
+    
+                    <!-- the contacts section (generated with Vue) -->
+                    <div class="chat-container">
+                        <div v-for="contact in contacts" class="contact-card d-flex">
+                            <img :src="`/assets/img/avatar${contact.avatar}.jpg`" :key="contact.id"alt="">
+                            <div class="contact-info-container">
+                                <p>{{contact.name}}</p>
+                            </div>
+    
+                        </div>
                     </div>
                 </div>
-            </div>
+    
+    
+    
+                <!-- right section (current chat) -->
+                <div class="right-section col-8 d-flex flex-column justify-content-between p-0 m-0">
+    
+                    <!-- the right header with info about the current contact -->
+                    <div class="right-header d-flex justify-content-between">
+                        <div class="user-section d-flex align-items-center p-2">
+                            <div class="user-avatar">
+                                <img src="/assets/img/avatar_io.jpg" alt="" class="img-fluid rounded-circle">
+                            </div>
+                            <div class="user-name d-flex align-items-center">
+                                <p class="m-0 ps-2">Catalin Calugarici</p>
+                            </div>
+                        </div>
+                        <div class="social-section d-flex align-items-center justify-content-between">
+                            <div class="stories">
+                                <i class="fa-solid fa-search p-2 text-secondary"></i>
+                            </div>
+                            <div class="messages">
+                                <i class="fa-solid fa-paperclip p-2 text-secondary"></i>
+                            </div>
+                            <div class="settings">
+                                <i class="fa-solid fa-ellipsis-vertical ps-2 pe-3 text-secondary"></i>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- the chat section -->
+                    <div class="content"></div>
+    
+    
+                    <!-- the "write a message" section -->
+                    <div class="right-footer d-flex align-items-center">
+                        <div class="emoji-container d-flex justify-content-center align-items-center">
+                            <i class="fa-regular fa-face-smile"></i>
+                        </div>
+                        <div class="message-input">
+                            <div class="input-group">
+                                <input type="text" class="chat-input form-control" placeholder="Scrivi un messaggio">
+                              </div>
+                        </div>
+                        <div class="voice-message d-flex justify-content-center align-items-center">
+                            <i class="fa-solid fa-microphone"></i>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>    
 
-        </div>    
+        </div>
 
 
 

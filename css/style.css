@@ -4,9 +4,20 @@
     box-sizing: border-box;
 }
 
+
+.background{
+    height: 100vh;
+    background-image: linear-gradient(180deg, rgb(89, 200, 156) 15%,  rgb(201, 201, 201) 15%);
+}
+
+.webapp-window{
+    height: 90%;
+    width: 90%;
+}
+
 /* contacts navbar */
 .left-section{
-    height:calc(100vh);
+    height:100%;
     background-color: rgb(210, 235, 239);
 }
 
@@ -42,7 +53,7 @@
 
 /* the contacts section */
 .chat-container{
-    height: calc(100vh - 220px);
+    height: 100%;
     background-color: darkgrey;
     overflow: hidden;
 }
@@ -58,7 +69,7 @@
 
 /* chat-section */
 .right-section{
-    max-height: 100vh; 
+    max-height: 100%; 
 }
 
 /* right header section */
@@ -71,7 +82,7 @@
 
 /* the messages section */
 .content{
-    height: calc(100vh - 140px);
+    height: 100%;
     width: 100%;
     background-image:url(/assets/img/mine.jpg);
     overflow: hidden;
