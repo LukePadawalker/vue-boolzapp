@@ -9,6 +9,12 @@ const app = createApp({
             user: data.user,
             contacts: data.contacts,
         }
+    },
+    methods: {
+        showClickedContact(contactName, contactAvatar) {
+            console.log(contactName);
+            console.log(contactAvatar);
+        }
     }
 })
 

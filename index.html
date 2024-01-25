@@ -95,14 +95,14 @@
     
                     <!-- the contacts section (generated with Vue) -->
                     <div class="chat-container overflow-auto">
-                        <div v-for="contact in contacts" class="contact-card d-flex align-items-center">
+                        <button v-for="contact in contacts" class="border-0 contact-card d-flex align-items-center" @click="showClickedContact(contact.name, contact.avatar)">
                             <img :src="`/assets/img/avatar${contact.avatar}.jpg`" :key="contact.id"alt="" class="contact-avatar rounded-circle img-fluid ms-2">
                             <div class="contact-info-container">
-                                <p class=" h6 m-0 ps-2">{{contact.name}}</p>
+                                <p class="h6 m-0 ps-2">{{contact.name}}</p>
                                 <p class="last-message fw-lighter m-0 ps-2"> Ultimo messaggio inviato</p>
                             </div>
     
-                        </div>
+                        </button>
                     </div>
                 </div>
     
