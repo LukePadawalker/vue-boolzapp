@@ -89,7 +89,7 @@
                     <div class="search-chat d-flex align-items-center ps-2 pe-2">
                         <div class="input-group">
                             <span class="input-group-text chat-input" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-                            <input type="text" class="form-control chat-input" placeholder="Cerca o inizia una nuova chat..." v-bind="chatInputSearch">
+                            <input type="text" class="form-control chat-input" placeholder="Cerca o inizia una nuova chat..." v-model="chatSearchInput">
                           </div>
                     </div>
     
@@ -142,9 +142,20 @@
     
                     <!-- the chat section -->
                     <div class="content d-flex flex-column overflow-y-scroll ps-5 pb-2 pe-5">
-                        <div class="message sent mb-2 d-flex align-items-center" v-for="message in messages">
-                            <p class="m-0 p-2 ps-3">{{textMessages}}</p>
-                            <p class="m-0 p-1 align-self-end message-time">{{textDate}}</p>
+                        <div v-for="message in textMessagesArray">
+                            <div v-if="message.status === 'sent'">
+                                <div class="message sent mb-2 d-flex">
+                                    <p class="m-0 p-2 ps-3">{{message.text}}</p>
+                                    <p class="m-0 p-1 align-self-end message-time">{{message.date}}</p>
+                                </div>
+                            </div>
+                            <div v-else>
+                                <div class="message sent mb-2 d-flex">
+                                    <p class="m-0 p-2 ps-3">{{message.text}}</p>
+                                    <p class="m-0 p-1 align-self-end message-time">{{message.date}}</p>
+                                </div>
+                            </div>
+
                         </div>
                         
                         
