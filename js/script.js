@@ -108,8 +108,9 @@ const app = createApp({
         // Method to handle the click on an option
         removeMessage(messageId) {
 
-            const indexToRemove = messageId;
-            this.textMessagesArray.splice((indexToRemove - 1), 1)
+            const elementToRemove = messageId;
+            const indexToRemove = messageId.textMessagesArray.indexOf(elementToRemove);
+            this.textMessagesArray.splice(indexToRemove, 1)
             this.currentMessageId = null;
         }
 
