@@ -190,7 +190,7 @@
                             <div v-if="message.id === hoveredMessageId" id="collapseOne" class="accordion-collapse collapse p-2" data-bs-parent="#accordionExample">
                                 <div class="accordion-body d-flex flex-column justify-content-between">
                                     <button class="mb-1" style="border: 0; background-color: blue; color: white; border-radius: 5px;">Info message</button>
-                                    <button style="border: 0; background-color: red; color: white; border-radius: 5px;" >Delete message</button>
+                                    <button @click="removeMessage(message.id)" style="border: 0; background-color: red; color: white; border-radius: 5px;" >Delete message</button>
                                 </div>
                             </div>
 

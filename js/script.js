@@ -106,9 +106,11 @@ const app = createApp({
         },
 
         // Method to handle the click on an option
-        handleOptionClick(option) {
-            // Handle the click action on one of the options
-            console.log(`You clicked on: ${option}`);
+        removeMessage(messageId) {
+
+            const indexToRemove = messageId;
+            this.textMessagesArray.splice((indexToRemove - 1), 1)
+            this.currentMessageId = null;
         }
 
 
