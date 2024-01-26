@@ -1,63 +1,67 @@
-console.log("vue ok", Vue)
+console.log("Vue is okay", Vue);
 
 const { createApp } = Vue;
 
-
 const app = createApp({
     data() {
-        return{
+        return {
             user: data.user,
             contacts: data.contacts,
             currentUser: '',
             currentAvatar: '',
             textMessagesArray: [],
-            textId: [],
-            textMessages: [],
-            textStatus: [],
-            textDate: [],
+            textDetails: {
+                id: [],
+                text: [],
+                status: [],
+                date: [],
+            },
             chatInput: '',
             chatSearchInput: '',
+            isHovered: false,
+            hoveredMessageId: null,
+            showOptionsList: false,
         }
     },
     computed: {
-        filteredChat(){
-            const originalLowercaseArray = this.chatSearchInput.toLowerCase();
-            const filteredChatArray = this.contacts.filter(contact => contact.name.includes(this.chatSearchInput));
-            return filteredChatArray;
-        }
+        // Computed method to filter contacts based on search input
+        filteredChat() {
+            const lowercasedSearchInput = this.chatSearchInput.toLowerCase();
+            return this.contacts.filter(contact => contact.name.toLowerCase().includes(lowercasedSearchInput));
+        },
     },
     methods: {
-
-        // metodo che mi restituisce il percorso dell'avatar
-        getAvatarUrl(avatar){
+        // Method that returns the avatar path
+        getAvatarUrl(avatar) {
             return `/assets/img/avatar${avatar}.jpg`;
         },
 
-        // metodo che viene eseguito al click di un contatto, mostra la chat con il contatto in questione
+        // Method executed when a contact is clicked, displaying the chat with the selected contact
         showClickedContactChat(contactId, contactName, contactAvatar, contactMessages) {
-
-            // mostra le info del contatto in alto
+            // Display contact information at the top
             this.currentUser = contactName;
             this.currentAvatar = contactAvatar;
-            this.textId = [];
-            this.textMessages = [];
-            this.textStatus =[];
-            this.textDate = [];
 
-            
-            // mostra i messaggi
+            // Reset arrays to show messages
+            this.textDetails = {
+                id: [],
+                text: [],
+                status: [],
+                date: [],
+            };
+
+            // Display messages
             this.textMessagesArray = contactMessages;
-            for (message in contactMessages){
-                this.textId.push(contactMessages[message].id);
-                this.textStatus.push(contactMessages[message].status);
-                this.textDate.push(contactMessages[message].date);
-                this.textMessages.push(contactMessages[message].text);                
-            }
+            contactMessages.forEach(message => {
+                this.textDetails.id.push(message.id);
+                this.textDetails.status.push(message.status);
+                this.textDetails.date.push(message.date);
+                this.textDetails.text.push(message.text);
+            });
         },
 
-    
-        // metodo che aggiunge il messaggio alla chat
-        addMessageToChat(chatInput){
+        // Method that adds a message to the chat
+        addMessageToChat() {
             const newMessage = {
                 id: new Date().toISOString(),
                 date: new Date().toLocaleTimeString(),
@@ -65,29 +69,50 @@ const app = createApp({
                 status: 'sent'
             }
 
-
+            // Add the new message to the chat
             this.textMessagesArray.push(newMessage);
 
+            // Clear chat input
             this.chatInput = '';
 
+            // Simulate a received message after a delay
             setTimeout(() => {
                 const receivedMessage = {
-                  id: new Date().toISOString(),
-                  date: new Date().toLocaleTimeString(),
-                  text: 'ok',
-                  status: 'received'
+                    id: new Date().toISOString(),
+                    date: new Date().toLocaleTimeString(),
+                    text: 'ok',
+                    status: 'received'
                 };
-          
+
+                // Add the received message to the chat
                 this.textMessagesArray.push(receivedMessage);
-              }, 1000);
+            }, 1000);
+        },
+        // Method to show the button during hover
+        showButton(messageId) {
+            this.isHovered = !this.isHovered;
+            this.hoveredMessageId = messageId;
+        },
+
+        // Method to hide the button when leaving hover
+        hideButton() {
+            this.isHovered = false;
+            this.hoveredMessageId = null;
+        },
+
+        // Method to show the options list on button click
+        showOptions() {
+            this.showOptionsList = true;
+        },
+
+        // Method to handle the click on an option
+        handleOptionClick(option) {
+            // Handle the click action on one of the options
+            console.log(`You clicked on: ${option}`);
         }
 
-        // metodo "cerca chat"
 
-
-        
     },
-
-})
+});
 
 app.mount("#root");
