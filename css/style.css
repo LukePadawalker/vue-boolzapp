@@ -6,23 +6,39 @@
 }
 
 
+/* universal buttons properties */
+.button{
+    border: 0;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+.button:hover{
+    transform:translateY(-5px);
+}
+
+
+/* background colors*/
 .background{
     height: 100vh;
     background-image: linear-gradient(180deg,hsl(174.4deg 100% 29.41%) 15%,  hsl(67.5deg 10% 84.31%)15%);
 }
 
+
+
+/* main appplication dimensions*/
 .webapp-window{
     height: 90%;
     width: 90%;
 }
 
-/* contacts navbar */
+
+/* left section (left navbar with infos) */
 .left-section{
     height:100%;
     background-color: white;
     border-radius: 20px 0 0 20px;
-
 }
+
 
 /* left header section */
 .left-header{
@@ -32,26 +48,20 @@
     border-radius: 20px 0 0 0;
 }
 
+
+/* avatar dimensions */
 .user-avatar{
     max-height:50px;
     max-width:50px;
 }
 
 
-/* receive notifications section */
+/* "allow notifications" section */
 .receive-notifications{
     height: 90px;
     width: 100%;
     background-color: hsl(198.92deg 96.52% 77.45%);
     transition: all 0.4s ease;
-
-}
-
-.bell-slash-container{
-    width: 50px;
-    height: 50px;
-    background-color: white;
-    color: rgb(164, 209, 221);
 }
 
 .receive-notifications:hover{
@@ -59,7 +69,18 @@
     color: white;
     border-radius: 20px;
 }
-/* the search contact section */
+
+
+/* bell container in the "allow notifications" (the white circle) */
+.bell-slash-container{
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    color: rgb(164, 209, 221);
+}
+
+
+/* the "search contact" input section */
 .search-chat{
     height: 50px;
     width: 100%;
@@ -67,8 +88,7 @@
 }
 
 
-
-/* the contacts section */
+/* the "last chats with contacts" section */
 .chat-container{
     height: 100%;
     background-color: white;
@@ -76,13 +96,13 @@
 
 }
 
+/* single contact card */
 .contact-card{
     height: 70px;
     width: 100%;
     background-color: white;
     transition: all 0.3s ease;
 }
-
 .contact-card:hover{
     border-radius: 20px;
     background-color: rgb(39, 121, 60);
@@ -100,14 +120,33 @@
 }
 
 
-
-
-/* chat-section */
+/* conversation section */
 .right-section{
     max-height: 100%; 
 }
 
 
+/* right header section */
+.right-header{
+    height: 70px;
+    width: 100%;
+    border-left: 0;
+    background-color:hsl(0deg 0% 91.76%);
+    border-radius: 0 20px 0 0;
+
+}
+
+
+/* the messages section */
+.content{
+    height: 100%;
+    width: 100%;
+    background-image:url(/assets/img/mine.jpg);
+    overflow: auto;
+}
+
+
+/* message properties */
 .message{
     min-height: 6%;
     max-width: 80%;
@@ -132,24 +171,6 @@
 
 }
 
-/* right header section */
-.right-header{
-    height: 70px;
-    width: 100%;
-    border-left: 0;
-    background-color:hsl(0deg 0% 91.76%);
-    border-radius: 0 20px 0 0;
-
-}
-
-/* the messages section */
-.content{
-    height: 100%;
-    width: 100%;
-    background-image:url(/assets/img/mine.jpg);
-    overflow: auto;
-}
-
 
 /* the "write a message" section */
 .right-footer{
@@ -157,16 +178,22 @@
     width: 100%;
     background-color:hsl(22.5deg 25% 93.73%);
     border-radius: 0 0 20px 0;
-
 }
 
+
+/* emoji */
 .emoji-container{
     width: 5%;
 }
+
+
+/* message input container*/
 .message-input{
     width: 90%;
 }
 
+
+/* message input */
 .chat-input{
     font-size: 0.7rem;
     border-radius: 7px;
@@ -175,17 +202,9 @@
     color: gray
 }
 
+
+/* voice message */
 .voice-message{
     width: 5%;
-
 }
 
-.button{
-    border: 0;
-    background-color: transparent;
-    transition: all 0.3s ease;
-}
-
-.button:hover{
-    transform:translateY(-5px);
-}
