@@ -123,7 +123,8 @@
 
 /* conversation section */
 .right-section{
-    max-height: 100%; 
+    max-height: 100%;
+
 }
 
 
@@ -140,10 +141,18 @@
 
 /* the messages section */
 .content{
-    height: 100%;
+    height:calc(100% - 70px);
     width: 100%;
     background-image:url(/assets/img/mine.jpg);
-    overflow: auto;
+}
+
+.message-options-button{
+    border: 0;
+    background-color: transparent;
+    transition: all 0.4s ease;
+}
+.message-options-button:hover{
+    transform: scale(1.4);
 }
 
 

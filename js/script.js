@@ -90,7 +90,7 @@ const app = createApp({
         },
         // Method to show the button during hover
         showButton(messageId) {
-            this.isHovered = !this.isHovered;
+            this.isHovered = true;
             this.hoveredMessageId = messageId;
         },
 
@@ -102,7 +102,7 @@ const app = createApp({
 
         // Method to show the options list on button click
         showOptions() {
-            this.showOptionsList = true;
+            this.showOptionsList = !this.showOptionsList;
         },
 
         // Method to handle the click on an option
