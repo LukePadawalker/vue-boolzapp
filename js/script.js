@@ -21,8 +21,8 @@ const app = createApp({
     },
     computed: {
         filteredChat(){
-            const originalLowercaseArray = this.chatInput.toLowerCase();
-            const filteredChatArray = this.contacts.filter(contact => contact.name.toLowerCase().includes(this.chatSearchInput));
+            const originalLowercaseArray = this.chatSearchInput.toLowerCase();
+            const filteredChatArray = this.contacts.filter(contact => contact.name.includes(this.chatSearchInput));
             return filteredChatArray;
         }
     },
