@@ -32,76 +32,96 @@
     <div id="root">
         <div class="background d-flex justify-content-center align-items-center">
             <div class="d-flex webapp-window">
+
                 <!-- left section (contacts + user) -->
                 <div class="left-section col-4 d-flex flex-column p-0">
     
                     <!-- left header with info about the user, story button, messages button and settings button -->
                     <div class="left-header d-flex align-items-center justify-content-between">
+
+                        <!-- left header, left section (user icon and name)-->
                         <div class="user-section d-flex align-items-center p-2">
+
+                            <!-- user avatar icor -->
                             <div class="user-avatar">
                                 <img :src="getAvatarUrl(user.avatar)" alt="" class="img-fluid rounded-circle ">
                             </div>
+
+                            <!-- user name -->
                             <div class="user-name d-flex align-items-center">
-                                <p class="m-0 ps-2">Luca</p>
+                                <p class="m-0 ps-2">{{user.name}}</p>
                             </div>
                         </div>
+
+                        <!-- left header, right section (stories, messages and settings icons)-->
                         <div class="social-section d-flex align-items-center justify-content-between">
+
+                            <!-- stories button -->
                             <div class="stories">
                                 <button class="button">
                                     <i class="fa-solid fa-circle-notch p-2 text-secondary"></i>
-
                                 </button>
                             </div>
+
+                            <!-- messages button -->
                             <div class="messages">
                                 <button class="button">
-
                                     <i class="fa-solid fa-message p-2 text-secondary"></i>
                                 </button>
-
                             </div>
+
+                            <!-- settings button -->
                             <div class="settings">
                                 <button class="button">
                                     <i class="fa-solid fa-ellipsis-vertical ps-2 pe-3 text-secondary"></i>
-
                                 </button>
-
-
                             </div>
                         </div>
                     </div>
     
     
-                    <!-- the annoying "allow notifications" tab -->
+                    <!-- the "allow notifications" tab -->
                     <div class="receive-notifications d-flex align-items-center ps-2">
+
+                        <!-- circle with bell inside -->
                         <div class="bell-slash-container rounded-circle d-flex align-items-center justify-content-center">
                             <i class="fa-solid fa-bell-slash"></i>
                         </div>
+
+                        <!-- allow notifications text section -->
                         <div class="enable-notifications-text d-flex flex-column ">
                             <p class="m-0 p-0 ps-2">Ricevi Notifiche di nuovi messaggi</p>
                             <p class="last-message m-0 p-0 ps-2 text-decoration-underline">Attiva le notifiche Desktop</p>
-                            <!-- sottolinea il testo -->
-
                         </div>
 
                     </div>
     
-                    <!-- the "search contact" search -->
+                    <!-- the search-chat input section-->
                     <div class="search-chat d-flex align-items-center ps-2 pe-2">
                         <div class="input-group">
+
+                            <!-- magnifing-glass -->
                             <span class="input-group-text chat-input" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+
+                            <!-- search-chat input -->
                             <input type="text" class="form-control chat-input" placeholder="Cerca o inizia una nuova chat..." v-model.trim="chatSearchInput">
                           </div>
                     </div>
     
                     <!-- the contacts section (generated with Vue) -->
                     <div class="chat-container overflow-auto">
+
+                        <!-- contact card -->
                         <button v-for="contact in filteredChat" class="border-0 contact-card d-flex align-items-center" @click="showClickedContactChat(contact.id, contact.name, contact.avatar, contact.messages)">
+
+                            <!-- contact avatar -->
                             <img :src="getAvatarUrl(contact.avatar)"alt="" class="contact-avatar rounded-circle img-fluid ms-2">
+
+                            <!-- contact name and last message -->
                             <div class="contact-info-container">
                                 <p class="h6 m-0 ps-2">{{contact.name}}</p>
                                 <p class="last-message fw-lighter m-0 ps-2"> Ultimo messaggio inviato</p>
                             </div>
-    
                         </button>
                     </div>
                 </div>
@@ -113,6 +133,8 @@
     
                     <!-- the right header with info about the current contact -->
                     <div class="right-header d-flex justify-content-between">
+
+                        <!-- section with info about the contact you are chatting with -->
                         <div class="user-section d-flex align-items-center p-2">
                             <div class="user-avatar">
                                 <img :src="`/assets/img/avatar${currentAvatar}.jpg`" alt="" class="img-fluid rounded-circle">
@@ -121,17 +143,25 @@
                                 <p class="m-0 ps-2">{{currentUser}}</p>
                             </div>
                         </div>
+
+                        <!-- section with "search word", pin and settings -->
                         <div class="social-section d-flex align-items-center justify-content-between">
-                            <div class="stories">
+
+                            <!-- search word -->
+                            <div class="search-word">
                                 <button class="button">
                                     <i class="fa-solid fa-search p-2 text-secondary"></i>
                                 </button>
                             </div>
-                            <div class="messages">
+
+                            <!-- pin -->
+                            <div class="pin">
                                 <button class="button">
                                     <i class="fa-solid fa-paperclip p-2 text-secondary"></i>
                                 </button>
                             </div>
+
+                            <!-- settings -->
                             <div class="settings">
                                 <button class="button">
                                     <i class="fa-solid fa-ellipsis-vertical ps-2 pe-3 text-secondary"></i>
@@ -142,47 +172,43 @@
     
                     <!-- the chat section -->
                     <div class="content d-flex flex-column justify-content-end overflow-y-scroll ps-5 pb-2 pe-5">
+
+                        <!-- message card -->
                         <div v-for="message in textMessagesArray" class="message mb-2 d-flex" :class="message.status">
                             <p class="m-0 p-2 ps-3">{{message.text}}</p>
                             <p class="m-0 p-1 align-self-end message-time">{{message.date}}</p>
                         </div>
-                        
-                        
-
-
-                        
-              
                     </div>
     
     
                     <!-- the "write a message" section -->
                     <div class="right-footer d-flex align-items-center">
+
+                        <!-- emoji button -->
                         <div class="emoji-container d-flex justify-content-center align-items-center">
                             <button class="button">
                                 <i class="fa-regular fa-face-smile"></i>
 
                             </button>
                         </div>
+
+                        <!-- message input -->
                         <div class="message-input">
                             <div class="input-group">
                                 <input v-model.trim="chatInput" @keyup.enter="addMessageToChat" autofocus type="text" class="chat-input form-control" placeholder="Scrivi un messaggio...">
                               </div>
                         </div>
+
+                        <!-- voice message -->
                         <div class="voice-message d-flex justify-content-center align-items-center">
                             <button class="button">
                                 <i class="fa-solid fa-microphone cursor-pointer"></i>
-                                <!-- ingrandire il microfono -->
                             </button>
                         </div>
                     </div>
                 </div>
-    
             </div>    
-
         </div>
-
-
-
     </div>
 </body>
 </html>
