@@ -22,13 +22,16 @@ const app = createApp({
 
 
     methods: {
+
+        // metodo che mi restituisce il percorso dell'avatar
         getAvatarUrl(avatar){
             return `/assets/img/avatar${avatar}.jpg`;
         },
 
+        // metodo che viene eseguito al click di un contatto, mostra la chat con il contatto in questione
         showClickedContactChat(contactId, contactName, contactAvatar, contactMessages) {
 
-            // show the contact info on right header
+            // mostra le info del contatto in alto
             this.currentUser = contactName;
             this.currentAvatar = contactAvatar;
             this.textId = [];
@@ -36,25 +39,20 @@ const app = createApp({
             this.textStatus =[];
             this.textDate = [];
 
-            // devo linkare al v-for delle chat, l'array completo
             
-            // show the messages 
+            // mostra i messaggi
             this.textMessagesArray = contactMessages;
-            for (let i = 0; i < contactMessages.length; i++){
-                this.textId.push(contactMessages[i].id);
-                this.textStatus.push(contactMessages[i].status);
-                this.textDate.push(contactMessages[i].date);
-                this.textMessages.push(contactMessages[i].text);
+            for (message in contactMessages){
+                this.textId.push(contactMessages[message].id);
+                this.textStatus.push(contactMessages[message].status);
+                this.textDate.push(contactMessages[message].date);
+                this.textMessages.push(contactMessages[message].text);
                 
             }
-            console.log(this.textId);
-            console.log(this.textDate);
-            console.log(this.textMessages);
-            console.log(this.textStatus);
-
-            // devi mostrare a schermo la chat
         },
+
     
+        // metodo che aggiunge il messaggio alla chat
         addMessageToChat(chatInput){
             const newMessage = {
                 id: new Date().toISOString(),
@@ -66,9 +64,7 @@ const app = createApp({
 
             this.textMessagesArray.push(newMessage);
 
-
-
-
+            this.chatInput = '';
 
             setTimeout(() => {
                 const receivedMessage = {
@@ -81,6 +77,10 @@ const app = createApp({
                 this.textMessagesArray.push(receivedMessage);
               }, 1000);
         }
+
+        // metodo "cerca chat"
+
+        
         
     },
 
