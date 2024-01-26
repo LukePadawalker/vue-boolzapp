@@ -39,7 +39,7 @@
                     <div class="left-header d-flex align-items-center justify-content-between">
                         <div class="user-section d-flex align-items-center p-2">
                             <div class="user-avatar">
-                                <img :src="`/assets/img/avatar${user.avatar}.jpg`" alt="" class="img-fluid rounded-circle ">
+                                <img :src="getAvatarUrl(user.avatar)" alt="" class="img-fluid rounded-circle ">
                             </div>
                             <div class="user-name d-flex align-items-center">
                                 <p class="m-0 ps-2">Luca</p>
@@ -95,8 +95,8 @@
     
                     <!-- the contacts section (generated with Vue) -->
                     <div class="chat-container overflow-auto">
-                        <button v-for="contact in contacts" class="border-0 contact-card d-flex align-items-center" @click="showClickedContactChat(contact.id, contact.name, contact.avatar, contact.messages)">
-                            <img :src="`/assets/img/avatar${contact.avatar}.jpg`" :key="contact.id"alt="" class="contact-avatar rounded-circle img-fluid ms-2">
+                        <button v-for="contact in contacts" :key="" class="border-0 contact-card d-flex align-items-center" @click="showClickedContactChat(contact.id, contact.name, contact.avatar, contact.messages)">
+                            <img :src="getAvatarUrl(contact.avatar)"alt="" class="contact-avatar rounded-circle img-fluid ms-2">
                             <div class="contact-info-container">
                                 <p class="h6 m-0 ps-2">{{contact.name}}</p>
                                 <p class="last-message fw-lighter m-0 ps-2"> Ultimo messaggio inviato</p>
@@ -141,7 +141,7 @@
                     </div>
     
                     <!-- the chat section -->
-                    <div class="content d-flex flex-column 0overflow-y-scroll ps-5 pb-2 pe-5">
+                    <div class="content d-flex flex-column overflow-y-scroll ps-5 pb-2 pe-5">
                         <div v-for="message in textMessagesArray" class="message mb-2 d-flex" :class="message.status">
                             <p class="m-0 p-2 ps-3">{{message.text}}</p>
                             <p class="m-0 p-1 align-self-end message-time">{{message.date}}</p>
@@ -165,7 +165,7 @@
                         </div>
                         <div class="message-input">
                             <div class="input-group">
-                                <input autofocus type="text" class="chat-input form-control" placeholder="Scrivi un messaggio...">
+                                <input v-model="chatInput" @keyup.enter="addMessageToChat" autofocus type="text" class="chat-input form-control" placeholder="Scrivi un messaggio...">
                               </div>
                         </div>
                         <div class="voice-message d-flex justify-content-center align-items-center">

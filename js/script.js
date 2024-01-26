@@ -15,10 +15,17 @@ const app = createApp({
             textMessages: [],
             textStatus: [],
             textDate: [],
-            chatSearchInput: [],
+            chatInput: '',
+            chatSearchInput: '',
         }
     },
+
+
     methods: {
+        getAvatarUrl(avatar){
+            return `/assets/img/avatar${avatar}.jpg`;
+        },
+
         showClickedContactChat(contactId, contactName, contactAvatar, contactMessages) {
 
             // show the contact info on right header
@@ -40,21 +47,41 @@ const app = createApp({
                 this.textMessages.push(contactMessages[i].text);
                 
             }
-
             console.log(this.textId);
             console.log(this.textDate);
             console.log(this.textMessages);
             console.log(this.textStatus);
 
-
-
-
-
-
-
-
             // devi mostrare a schermo la chat
+        },
+    
+        addMessageToChat(chatInput){
+            const newMessage = {
+                id: new Date().toISOString(),
+                date: new Date().toLocaleDateString(),
+                text: this.chatInput,
+                status: 'sent'
+            }
+
+
+            this.textMessagesArray.push(newMessage);
+
+
+
+
+
+            setTimeout(() => {
+                const receivedMessage = {
+                  id: new Date().toISOString(),
+                  date: new Date().toLocaleDateString(),
+                  text: 'ok',
+                  status: 'received'
+                };
+          
+                this.textMessagesArray.push(receivedMessage);
+              }, 1000);
         }
+        
     },
 
 })
