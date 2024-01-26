@@ -19,8 +19,13 @@ const app = createApp({
             chatSearchInput: '',
         }
     },
-
-
+    computed: {
+        filteredChat(){
+            const originalLowercaseArray = this.chatInput.toLowerCase();
+            const filteredChatArray = this.contacts.filter(contact => contact.name.toLowerCase().includes(this.chatSearchInput));
+            return filteredChatArray;
+        }
+    },
     methods: {
 
         // metodo che mi restituisce il percorso dell'avatar
@@ -46,8 +51,7 @@ const app = createApp({
                 this.textId.push(contactMessages[message].id);
                 this.textStatus.push(contactMessages[message].status);
                 this.textDate.push(contactMessages[message].date);
-                this.textMessages.push(contactMessages[message].text);
-                
+                this.textMessages.push(contactMessages[message].text);                
             }
         },
 
@@ -56,7 +60,7 @@ const app = createApp({
         addMessageToChat(chatInput){
             const newMessage = {
                 id: new Date().toISOString(),
-                date: new Date().toLocaleDateString(),
+                date: new Date().toLocaleTimeString(),
                 text: this.chatInput,
                 status: 'sent'
             }
@@ -69,7 +73,7 @@ const app = createApp({
             setTimeout(() => {
                 const receivedMessage = {
                   id: new Date().toISOString(),
-                  date: new Date().toLocaleDateString(),
+                  date: new Date().toLocaleTimeString(),
                   text: 'ok',
                   status: 'received'
                 };
@@ -80,7 +84,7 @@ const app = createApp({
 
         // metodo "cerca chat"
 
-        
+
         
     },
 

@@ -89,13 +89,13 @@
                     <div class="search-chat d-flex align-items-center ps-2 pe-2">
                         <div class="input-group">
                             <span class="input-group-text chat-input" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-                            <input type="text" class="form-control chat-input" placeholder="Cerca o inizia una nuova chat..." v-model="chatSearchInput">
+                            <input type="text" class="form-control chat-input" placeholder="Cerca o inizia una nuova chat..." v-model.trim="chatSearchInput">
                           </div>
                     </div>
     
                     <!-- the contacts section (generated with Vue) -->
                     <div class="chat-container overflow-auto">
-                        <button v-for="contact in contacts" :key="" class="border-0 contact-card d-flex align-items-center" @click="showClickedContactChat(contact.id, contact.name, contact.avatar, contact.messages)">
+                        <button v-for="contact in filteredChat" class="border-0 contact-card d-flex align-items-center" @click="showClickedContactChat(contact.id, contact.name, contact.avatar, contact.messages)">
                             <img :src="getAvatarUrl(contact.avatar)"alt="" class="contact-avatar rounded-circle img-fluid ms-2">
                             <div class="contact-info-container">
                                 <p class="h6 m-0 ps-2">{{contact.name}}</p>
@@ -165,7 +165,7 @@
                         </div>
                         <div class="message-input">
                             <div class="input-group">
-                                <input v-model="chatInput" @keyup.enter="addMessageToChat" autofocus type="text" class="chat-input form-control" placeholder="Scrivi un messaggio...">
+                                <input v-model.trim="chatInput" @keyup.enter="addMessageToChat" autofocus type="text" class="chat-input form-control" placeholder="Scrivi un messaggio...">
                               </div>
                         </div>
                         <div class="voice-message d-flex justify-content-center align-items-center">
