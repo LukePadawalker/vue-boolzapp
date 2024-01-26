@@ -110,7 +110,7 @@
                     </div>
     
                     <!-- the contacts section (generated with Vue) -->
-                    <div class="chat-container overflow-auto">
+                    <div class="chat-container overflow-y-scroll">
 
                         <!-- contact card -->
                         <button v-for="contact in filteredChat" class="border-0 contact-card d-flex align-items-center" @click="showClickedContactChat(contact.id, contact.name, contact.avatar, contact.messages)">
@@ -172,28 +172,30 @@
                     </div>
     
                     <!-- the chat section -->
-                    <div class="content d-flex flex-column justify-content-end ps-5 pb-2 pe-5">
+                    <div class="content d-flex flex-column justify-content-end overflow-y-scroll ps-5 pb-2 pe-5">
 
                         <!-- message card -->
-                        <div v-for="message in textMessagesArray" @mouseover="showButton(message.id)" @mouseleave="hideButton(message.id)" class="message mb-2 d-flex" :class="message.status">
-                            <p class="m-0 p-2 ps-3">{{message.text}}</p>
-                            <div class="m-0 d-flex flex-column justify-content-end p-1" style="height: 100%;">
-
-                                <div id="accordionFlushExample" class="accordion-item m-0 d-flex flex-column justify-content-end" >
-                                    <h2 class="accordion-header m-0 d-flex justify-content-end">
-                                        <button v-if="isHovered === true && message.id === hoveredMessageId" @click="showOptions(message.id)" class="accordion-button collapsed message-options-button align-self-end justify-content-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <div v-for="message in textMessagesArray" @mouseover="showButton(message.id)" @mouseleave="hideButton(message.id)" class="message mb-2 d-flex flex-column" :class="message.status">
+                            <div class="d-flex">
+                                <p class="m-0 p-2 ps-3">{{message.text}}</p>
+                                <div class="m-0 d-flex flex-column justify-content-end" style="height: 100%;">
+                                    <div id="accordionFlushExample" class="m-0 d-flex flex-column justify-content-end" >
+                                        <button v-if="isHovered === true && message.id === hoveredMessageId" @click="showOptions(message.id)" class="  message-options-button fw-lighter align-self-end justify-content-end pe-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                             <i class="fa-solid fa-angle-down"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample" style="background-color: aliceblue;">
-                                      <div class="accordion-body">
-                                        
-                                      </div>
+                                        </button>   
+                                    </div>
+                                    <p class="m-0 pe-1 message-time">{{message.date}}</p>
                                 </div>
-                        
-                                <p class=" m-0 message-time">{{message.date}}</p>
                             </div>
+                            <div v-if="message.id === hoveredMessageId" id="collapseOne" class="accordion-collapse collapse p-2" data-bs-parent="#accordionExample">
+                                <div class="accordion-body d-flex flex-column justify-content-between">
+                                    <button class="mb-1" style="border: 0; background-color: blue; color: white; border-radius: 5px;">Info message</button>
+                                    <button style="border: 0; background-color: red; color: white; border-radius: 5px;" >Delete message</button>
+                                </div>
+                            </div>
+
                         </div>
+
                     </div>
     
     
